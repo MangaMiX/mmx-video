@@ -1,4 +1,5 @@
 import hashlib
+from http.client import IncompleteRead
 from io import BytesIO
 import logging
 import re
@@ -44,7 +45,7 @@ class MangatubeExtractor:
                             self.logger.debug(f'Invalid video: "{video.title}" for anime "{anime}", query: "{format_query}"')
                     else:
                         self.logger.debug(f'no video found for anime "{anime}", query: "{format_query}"')
-            except (KeyError, TimeoutError, AgeRestrictedError) as e:
+            except (KeyError, TimeoutError, AgeRestrictedError, IncompleteRead) as e:
                 self.logger.error(f'An exception of type {type(e)} with arguments: {e.args} occurred. '
                                   f'Anime "{anime}", query: "{format_query}".')
 
