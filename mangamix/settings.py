@@ -9,3 +9,4 @@ S3_ACCESS_KEY = os.getenv('S3_ACCESS_KEY', 'minio')
 S3_SECRET_KEY = os.getenv('S3_SECRET_KEY', 'minio123')
 S3_BUCKET = os.getenv('S3_BUCKET', 'mangamix')
 MMX_SEARCH_SIZE = int(os.getenv('MMX_SEARCH_SIZE', '10'))
+MMX_ANIMES = os.getenv('MMX_ANIMES').split(',') if os.getenv('MMX_ANIMES') else []

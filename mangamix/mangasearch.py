@@ -5,7 +5,7 @@ import elastic_transport
 import elasticsearch
 from elasticsearch import AsyncElasticsearch
 
-from mangamix.settings import ES_INDEX, ES_HOST, ES_USER, ES_PASSWORD, MMX_SEARCH_SIZE
+from mangamix.settings import ES_INDEX, ES_HOST, ES_USER, ES_PASSWORD, MMX_SEARCH_SIZE, MMX_ANIMES
 
 
 class Mangasearch:
@@ -16,6 +16,8 @@ class Mangasearch:
         self.num = start_index
 
     async def get_next_animes(self) -> list[str]:
+        if len(MMX_ANIMES) > 0:
+            return MMX_ANIMES
         self.logger.info(f'Try to get animes')
         try:
             response = await self.es.search(index=ES_INDEX, size=MMX_SEARCH_SIZE, from_=self.__get_anime_index())
