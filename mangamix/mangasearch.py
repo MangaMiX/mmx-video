@@ -53,6 +53,7 @@ class Mangasearch:
 
     def reset_index(self):
         self.num = -MMX_SEARCH_SIZE
+        self.logger.info(f'Index is reset')
 
     @staticmethod
     def hash_name(name: str):
